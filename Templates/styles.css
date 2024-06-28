@@ -1,0 +1,273 @@
+:root {
+  --font-family: "Poppins", sans-serif;
+  --background-color: #fcf9ff;
+  --primary-color: #7708ee;
+  --secondary-color: #111111;
+  --box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  --hover-box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  --border-radius: 5px;
+}
+
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background: var(--background-color);
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: circle;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 1em;
+  margin: 1em;
+  background-color: var(--background-color);
+  /* background-image: linear-gradient(to right,#fcf9ff, #9949f0, #7708ee); */
+  box-shadow: var(--box-shadow);
+  color: var(--primary-color);
+  text-align: center;
+  padding: 0.7em;
+  border-radius: var(--border-radius);
+  font-size: 2em;
+}
+
+h1 {
+  width: 15%;
+  margin: 0 2em;
+}
+
+.navbar img {
+  margin-left: 3em;
+}
+/* .navbar h1{
+  color: var(--background-color);
+} */
+
+.center {
+  display: flex;
+}
+
+.sidebar {
+  width: 50%;
+  padding: 2em;
+}
+
+.sidebar ul {
+  box-shadow: var(--box-shadow);
+  padding: 2em 4em;
+  background: #fdfdfd;
+  margin: 0;
+}
+
+.sidebar ul li {
+  padding: 0.5em;
+  width: 50%;
+  border-radius: var(--border-radius);
+  font-size: 1.5em;
+}
+
+.sidebar ul li a {
+  padding: 0.5em;
+  color: var(--primary-color);
+  transition: 0.2s all linear;
+  border-radius: 3px;
+}
+
+.sidebar a.active {
+  /* color: var(--secondary-color);
+  border-bottom: 1px solid var(--secondary-color); */
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.sidebar ul li a:hover {
+  /* margin: 0 0.5em; */
+  color: var(--secondary-color);
+  border-bottom: 1px solid var(--secondary-color);
+}
+
+
+p {
+  font-size: 1.4em;
+}
+
+#searchInput {
+  width: 20%;
+  border: 1px solid var(--primary-color);
+  outline: none;
+  padding: 1.2em 2em;
+  border-radius: 50px;
+}
+
+.navbar-title {
+  margin: 0;
+}
+
+.homepage-cards {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  padding: 1em 0;
+}
+
+.card {
+  width: 50%;
+  margin: 1em;
+  border-radius: var(--border-radius);
+  background-color: #ffffff;
+  box-shadow: var(--box-shadow);
+  transition: 0.2s all linear;
+}
+
+.card:hover {
+  box-shadow: var(--hover-box-shadow);
+}
+
+.card:last-child {
+  margin-right: 0;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  align-items: center;
+}
+
+.card-title {
+  margin: 0;
+  font-size: 2em;
+}
+
+.copy-btn {
+  padding: 1em 2em;
+  background-color: #111111;
+  border: none;
+  color: #fff;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: 0.2s all linear;
+}
+
+.copy-btn:hover {
+  background-color: #fdfdfd;
+  color: #111111;
+}
+
+.card-content {
+  padding: 20px;
+}
+
+.content-text {
+  margin: 0;
+}
+
+ul li {
+  margin-bottom: 1em;
+  font-size: 1.5em;
+}
+
+.popup-container {
+  background: rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  z-index: 999;
+}
+
+.popup-container.hidden {
+  display: none;
+}
+
+.card2 {
+  margin: 1em;
+  font-size: 1.3em;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.card2 .content-text {
+  font-size: 1em;
+}
+
+/* Responsive Design */
+
+@media only screen and (max-width: 1000px) {
+  .navbar{
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .center{
+    display: block;
+  }
+  .sidebar{
+    width: auto;
+  }
+  .card{
+    width: 100%;
+
+  }
+}
+
+@media only screen and (max-width: 530px) {
+  .navbar{
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  h1{
+    width: 100%;
+  }
+  .center{
+    display: block;
+  }
+  .sidebar{
+    width: auto;
+  }
+  .sidebar ul{
+    font-size: 0.7em;
+  }
+  .card-content{
+    font-size: 0.7em;
+  }
+  .card{
+    width: 100%;
+  }
+  .card2{
+    width: 90%;
+    margin: 0;
+    overflow: hidden;
+  }
+}

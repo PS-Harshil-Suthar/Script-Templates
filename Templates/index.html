@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="img">
+        <img src="productsquads logo.png" alt="PS-Logo" />
+      </div>
+      <h1 class="navbar-title">Script Template</h1>
+      <!-- <input type="text" id="searchInput" oninput="searchCards()" placeholder="Search by title..."> -->
+    </nav>
+    <div class="center">
+      <aside class="sidebar">
+        
+        <div class="card-header">
+          <h2 class="card-title">Template Title</h2>
+        </div>
+        <ul>
+          <li>
+            <a href="#uninstall-software" onclick="showCard(1)">Uninstall Software</a>
+          </li>
+          <li>
+            <a href="#software-install" onclick="showCard(2)">Software Install</a>
+          </li>
+          <li>
+            <a href="#remove-file-path" onclick="showCard(3)">Remove File Path</a>
+          </li>
+          <!-- <li>
+            <a href="#paid-licence" onclick="showCard(4)">Paid Licence</a>
+          </li>
+          <li>
+            <a href="#vulnerability-template" onclick="showCard(5)">Vulnerability Template</a>
+          </li>
+          <li>
+            <a href="#okta-setup-mail" onclick="showCard(6)">OKTA Setup Mail</a>
+          </li>
+          <li>
+            <a href="#cloud-pc-assign" onclick="showCard(7)">Cloud PC Assign</a>
+          </li>
+          <li>
+            <a href="#user-not-responding" onclick="showCard(8)">User Not Responding</a>
+          </li>
+          <li>
+            <a href="#user-message-after-escalate" onclick="showCard(9)">User-Message After Escalate</a>
+          </li> -->
+        </ul>
+      </aside>
+      <section class="homepage-cards">
+        <div class="card" id="card-1">
+          <div class="card-header">
+            <h2 class="card-title">Uninstall Softwre</h2>
+            <button class="copy-btn" onclick="copyToClipboard(1)">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <ul class="content-text">
+             <pre># Define the name of the application to uninstall
+              $appName = "Cisco AnyConnect Secure Mobility Client"
+               
+              # Get the application object using WMI
+              $app = Get-WmiObject -Query "SELECT * FROM Win32_Product WHERE Name = '$appName'"
+               
+              # Check if the application was found
+              if ($app -ne $null) {
+                  Write-Output "Found application: $appName"
+                  # Uninstall the application
+                  $app.Uninstall() | Out-Null
+                  Write-Output "$appName has been uninstalled successfully."
+              } else {
+                  Write-Output "Application $appName not found."
+              }</pre>
+            </ul>
+          </div>
+        </div>
+        <div class="card" id="card-2">
+          <div class="card-header">
+            <h2 class="card-title">Software Install</h2>
+            <button class="copy-btn" onclick="copyToClipboard(2)">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <ul class="content-text">
+              <pre># Define the URL for the Google Chrome installer 
+                $chromeInstallerUrl = "
+                https://dl.google.com/chrome/install/latest/chrome_installer.exe"
+                 
+                # Define the path to save the installer 
+                $installerDirectory = "C:\temp" 
+                $installerPath = "$installerDirectory\chrome_installer.exe" 
+                $chromePath = "$env:ProgramFiles\Google\Chrome\Application\chrome.exe" 
+                try { 
+                     # Create the directory if it does not exist 
+                     if (-Not (Test-Path -Path $installerDirectory)) { 
+                         New-Item -Path $installerDirectory -ItemType Directory | Out-Null 
+                    } 
+                    # Download the installer 
+                     Write-Output "Downloading Google Chrome installer..." 
+                     Invoke-WebRequest -Uri $chromeInstallerUrl -OutFile $installerPath 
+                    # Verify that the file has been downloaded 
+                     if (-Not (Test-Path -Path $installerPath)) { 
+                         throw "Download failed. The file $installerPath does not exist." 
+                    } 
+                    Write-Output "Download complete. Installing Google Chrome..." 
+                    # Execute the installer 
+                     Start-Process -FilePath $installerPath -Args "/silent /install" -Wait 
+                    # Verify installation by checking if Chrome is installed 
+                     if (Test-Path -Path $chromePath) { 
+                         Write-Output "Google Chrome has been successfully installed." 
+                     } else { 
+                         throw "Google Chrome installation failed." 
+                     } 
+                    # Remove the installer after installation 
+                     Remove-Item $installerPath 
+                    Write-Output "Cleanup complete. Installer removed." 
+                } catch { 
+                     Write-Error "An error occurred during the installation process: $_" 
+                }</pre>
+            </ul>
+          </div>
+        </div>
+        <div class="card" id="card-3">
+          <div class="card-header">
+            <h2 class="card-title">Remove File Path</h2>
+            <button class="copy-btn" onclick="copyToClipboard(3)">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <ul class="content-text">
+             <pre>Remove-Item -Path "path for remove"</pre>
+            </ul>
+          </div>
+        </div>
+        <div class="card" id="card-4">
+          <div class="card-header">
+            <h2 class="card-title">Paid Licence</h2>
+            <button class="copy-btn" onclick="copyToClipboard(4)">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <ul class="content-text">
+              <p>
+                Hey @username , <br /><br />
+                @username Haqani has requested a paid license for Lucidchart.
+                This costs 365 USD per user per year. Please confirm approval
+                for this request.
+                <br /><br />Kindest regards<br />IT Tech Support
+              </p>
+            </ul>
+          </div>
+        </div>
+        <div class="card" id="card-5">
+          <div class="card-header">
+            <h2 class="card-title">vulnerability Template</h2>
+            <button class="copy-btn" onclick="copyToClipboard(5)">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <ul class="content-text">
+              <h2>Subject: - Action Required: Update Google Chrome</h2>
+              <p>
+                Dear @username , <br /><br />
+                It seems you might be running on an older Chrome version, which
+                has some security vulnerabilities so it is important to keep
+                Chrome up to date. <br /><br />
+                This should also be happening automatically so when you open
+                Chrome check if at the top right it tells you there is a new
+                version. Let us know if you see anything like this. <br /><br />
+                Furthermore, please follow these steps to your Google Chrome
+                browser to the latest version by following these steps:
+                <br /><br />
+                1. Open Chrome. <br />
+                2. Click the three vertical dots (Menu) in the top-right corner.
+                <br />
+                3. Go to "Help" > "About Google Chrome". <br />
+                4. Chrome will check for updates and install them. <br />
+                5. Click "Relaunch" to complete the update. <br /><br />
+                Kindest regards
+                <br />
+                IT Tech Support,
+              </p>
+            </ul>
+          </div>
+        </div>
+        <div class="card" id="card-6">
+          <div class="card-header">
+            <h2 class="card-title">OKTA Setup Mail</h2>
+            <button class="copy-btn" onclick="copyToClipboard(6)">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <ul class="content-text">
+              <p>
+                Dear @username , <br /><br />
+                Please follow the below instructions to complete your OKTA
+                setup.
+                <br /><br />
+                Step 1: You will receive a SMS on your mobile to verify your
+                account. <br />
+                Step 2: You will receive an email in your account with subject
+                line “Welcome to OKTA”.<br />
+                Step 3: Click the link in the email and follow the instructions
+                to complete the setup.
+                <br /><br />
+                Kindest regards<br />IT Tech Support,
+              </p>
+            </ul>
+          </div>
+        </div>
+        <div class="card" id="card-7">
+          <div class="card-header">
+            <h2 class="card-title">Cloud PC Assign</h2>
+            <button class="copy-btn" onclick="copyToClipboard(7)">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <ul class="content-text">
+              <p>
+                Hello @username , <br /><br />
+                Cloud PC has been assigned and the machine is created. Please
+                follow below steps to complete the process.
+                <br /><br />
+                Step 1: Open Azure Virtual Desktop client<br />
+                Step 2: Login using your AD credentials<br />
+                Step 3: Follow the instructions for machine setup.
+                <br /><br />
+                Kindest regards<br />IT Tech Support,
+              </p>
+            </ul>
+          </div>
+        </div>
+        <div class="card" id="card-8">
+          <div class="card-header">
+            <h2 class="card-title">User Not Responding</h2>
+            <button class="copy-btn" onclick="copyToClipboard(8)">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <ul class="content-text">
+              <p>
+                Hello @username , <br /><br />
+                We have not received any response on your request. Please
+                respond with the required information.
+                <br /><br />
+                Kindest regards<br />IT Tech Support,
+              </p>
+            </ul>
+          </div>
+        </div>
+        <div class="card" id="card-9">
+          <div class="card-header">
+            <h2 class="card-title">User-Message After Escalate</h2>
+            <button class="copy-btn" onclick="copyToClipboard(9)">
+              <i class="far fa-copy"></i>
+            </button>
+          </div>
+          <div class="card-content">
+            <ul class="content-text">
+              <p>
+                Hello @username , <br /><br />
+                Your request has been escalated to the relevant department.
+                Please allow some time for us to respond.
+                <br /><br />
+                Kindest regards<br />IT Tech Support,
+              </p>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div id="popup-container" class="popup-container hidden"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
